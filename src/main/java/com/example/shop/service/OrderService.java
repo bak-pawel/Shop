@@ -1,11 +1,11 @@
 package com.example.shop.service;
 
-import com.example.shop.repository.ShopRepository;
+import com.example.shop.repository.DrinkRepository;
 
 public class OrderService {
-    private final ShopRepository shopRepostory;
+    private final DrinkRepository shopRepostory;
 
-    public OrderService(ShopRepository shopRepository){
-        this.shopRepostory = shopRepository;
+    public OrderService(DrinkRepository drinkRepository){
+        this.shopRepostory = drinkRepository;
     }
 }
