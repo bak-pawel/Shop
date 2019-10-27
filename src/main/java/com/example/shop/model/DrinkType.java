@@ -1,11 +1,13 @@
 package com.example.shop.model;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 @Entity
 public class DrinkType {
-    int id;
-    String name;
+    @Id
+   private int id;
+   private String name;
 
     public int getId() {
         return id;

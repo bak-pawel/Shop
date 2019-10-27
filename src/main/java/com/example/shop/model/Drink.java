@@ -6,9 +6,9 @@ import java.util.Objects;
 @Entity
 public class Drink  {
     @Id
-    @GeneratedValue(generator = "roleSeq")
-    @SequenceGenerator(name = "roleSeq", sequenceName = "role_seq", allocationSize = 1)
-    int id;
+    @GeneratedValue(generator = "drinkSeq")
+    @SequenceGenerator(name = "drinkSeq", sequenceName = "drink_seq", allocationSize = 1)
+   private int id;
     int typeId;
     String name;
     int volume;
@@ -70,20 +70,14 @@ public class Drink  {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof Drink)) return false;
         Drink drink = (Drink) o;
-        return id == drink.id &&
-                typeId == drink.typeId &&
-                volume == drink.volume &&
-                Double.compare(drink.price, price) == 0 &&
-                quantity == drink.quantity &&
-                Objects.equals(name, drink.name) &&
-                Objects.equals(drinkType, drink.drinkType);
+        return id == drink.id;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, typeId, name, volume, price, quantity, drinkType);
+        return Objects.hash(id);
     }
 
     public Drink() {}
