@@ -9,11 +9,11 @@ public class Drink  {
     @GeneratedValue(generator = "drinkSeq")
     @SequenceGenerator(name = "drinkSeq", sequenceName = "drink_seq", allocationSize = 1)
    private int id;
-    int typeId;
-    String name;
-    int volume;
-    double price;
-    int quantity;
+   private int typeId;
+   private String name;
+   private int volume;
+   private double price;
+   private int quantity;
 
 
     @ManyToOne
