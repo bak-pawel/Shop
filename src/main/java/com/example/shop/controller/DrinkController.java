@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 public class DrinkController {
@@ -19,14 +20,20 @@ public class DrinkController {
 
     @GetMapping("/")
     public ModelAndView searchDrinkView() {
-        return new ModelAndView("home");
-    }
-
-    @GetMapping("/drinks")
-    public ModelAndView searchDrink(@RequestParam(required = false) String drinkName) {
-        List<Drink> drinks = orderService.findDrinkByName(drinkName);
-        ModelAndView modelAndView = new ModelAndView("view");
+        Set<Drink> drinks = orderService.findAllDrink();
+        ModelAndView modelAndView = new ModelAndView("home");
         modelAndView.addObject("drinks", drinks);
         return modelAndView;
     }
+
+    @GetMapping("/drinks")
+    public ModelAndView searchDrink(@RequestParam(required = true) String drinkName) {
+            Set<Drink> drink = orderService.findDrinkByName(drinkName);
+            ModelAndView modelAndView = new ModelAndView("view");
+            modelAndView.addObject("drink", drink);
+            return modelAndView;
+
+
+    }
+
 }

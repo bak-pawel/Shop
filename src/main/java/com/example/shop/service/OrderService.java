@@ -5,6 +5,8 @@ import com.example.shop.repository.DrinkRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
+
 
 @Service
 public class OrderService {
@@ -14,11 +16,14 @@ public class OrderService {
         this.drinkRepository = drinkRepository;
     }
 
-    public List<Drink> findDrinkByName(String drinkName) {
+    public Set<Drink> findDrinkByName(String drinkName) {
        if(drinkName!=null){
            return drinkRepository.findDrinkByName(drinkName);
        }
-       return drinkRepository.findAll();
+       return drinkRepository.findAllDrinks();
 
+    }
+    public Set<Drink> findAllDrink(){
+        return drinkRepository.findAllDrinks();
     }
 }
