@@ -11,7 +11,7 @@ import java.util.List;
 @SessionScope
 public class CartSession {
     private List<Drink> sessionDrinks = new ArrayList<>();
-    public void addDrinkToBasket(Drink drink){
+    public void addDrinkToCart(Drink drink){
         sessionDrinks.add(drink);
     }
 }
