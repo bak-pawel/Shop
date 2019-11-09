@@ -14,7 +14,7 @@
     <td>Nazwa: ${drink.name}</td></br>
     <td>Pojemność: ${drink.volume}</td>
     <td>Cena: ${drink.price}</td>
-    <td>Dostępność: ${drink.quantity}</td></br>
+    <td>Dostępność: ${drink.availability}</td></br>
 
     <td><a href="/drink/${drink}"></a></td>
 

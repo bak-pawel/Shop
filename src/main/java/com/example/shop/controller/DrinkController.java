@@ -32,8 +32,12 @@ public class DrinkController {
             ModelAndView modelAndView = new ModelAndView("view");
             modelAndView.addObject("drink", drink);
             return modelAndView;
-
-
     }
+    @GetMapping("/cart")
+    public ModelAndView basketProduct(){
+        ModelAndView modelAndView = new ModelAndView("cart");
+        return modelAndView;
+    }
+
 
 }
