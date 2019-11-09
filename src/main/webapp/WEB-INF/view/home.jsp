@@ -19,7 +19,7 @@
         <td>Szt</td>
         <form method="get" action="/cart">
             <input name="availability"/>
-            <input name="id" value="${drink.id}" hidden/>
+                <input name="id" value="${drink.id}" hidden/>
             <input type="submit" value="add to cart"/>
         </form>
 

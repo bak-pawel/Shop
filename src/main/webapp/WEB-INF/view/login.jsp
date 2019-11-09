@@ -10,11 +10,11 @@
 
 <body>
 <h1>Formularz logowania</h1>
-<form action="loginsuccess.jsp" method="post">
+<form action="/login" method="post">
     <table style="with: 100%">
         <tr>
             <td>Nazwa użytkownika</td>
-            <td><input type="text" name="username" /></td>
+            <td><input type="text" name="user" /></td>
         </tr>
         <tr>
             <td>Hasło</td>

@@ -14,11 +14,10 @@ import java.util.Set;
 @RestController
 public class DrinkController {
     private final OrderService orderService;
-    private final CartSession cartSession;
+
 
     public DrinkController(OrderService orderService, CartSession cartSession) {
         this.orderService = orderService;
-        this.cartSession = cartSession;
     }
 
     @GetMapping("/")
@@ -40,12 +39,18 @@ public class DrinkController {
     @GetMapping("/cart")
     public ModelAndView basketProduct(@RequestParam(required = false) int id, @RequestParam(required = false) int availability) {
         Optional<Drink> byId = orderService.findById(id);
+
         if (byId.isPresent()) {
             Drink drink = byId.get();
-            drink.setAvailability(drink.getAvailability() - availability);
-            orderService.save(drink);
+            if (drink.getAvailability() >= availability) {
+                drink.setAvailability(drink.getAvailability() - availability);
+                orderService.save(drink,availability);
+
+            }
+
         }
         ModelAndView modelAndView = new ModelAndView("home");
+        modelAndView.addObject(byId);
         modelAndView.addObject("drinks", orderService.findAllDrink());
         return modelAndView;
 
