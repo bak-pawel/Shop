@@ -17,10 +17,10 @@ public class OrderService {
     }
 
     public Set<Drink> findDrinkByName(String drinkName) {
-       if(drinkName!=null){
-           return drinkRepository.findDrinkByName(drinkName);
+       if(drinkName==null|| drinkName.equals("")){
+           return drinkRepository.findAllDrinks();
        }
-       return drinkRepository.findAllDrinks();
+        return drinkRepository.findDrinkByName(drinkName);
 
     }
     public Set<Drink> findAllDrink(){
