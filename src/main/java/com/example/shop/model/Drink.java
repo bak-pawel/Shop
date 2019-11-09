@@ -13,7 +13,16 @@ public class Drink  {
    private String name;
    private int volume;
    private double price;
-   private int quantity;
+    private int availability;
+
+
+    public int getAvailability() {
+        return availability;
+    }
+
+    public void setAvailability(int availability) {
+        this.availability = availability;
+    }
 
 
     @ManyToOne
@@ -59,33 +68,22 @@ public class Drink  {
         this.price = price;
     }
 
-    public int getQuantity() {
-        return quantity;
-    }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Drink)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
         Drink drink = (Drink) o;
-        return id == drink.id;
+        return id == drink.id &&
+                typeId == drink.typeId &&
+                volume == drink.volume &&
+                Double.compare(drink.price, price) == 0 &&
+                Objects.equals(name, drink.name);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(id);
-    }
-
-    public Drink() {}
-
-    public Drink(int typeId, String name, int volume, double price) {
-        this.typeId = typeId;
-        this.name = name;
-        this.volume = volume;
-        this.price = price;
     }
 }
