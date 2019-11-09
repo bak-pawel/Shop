@@ -8,14 +8,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.persistence.Id;
 import java.util.Optional;
 import java.util.Set;
 
 @RestController
 public class DrinkController {
     private final OrderService orderService;
-private final CartSession cartSession;
+    private final CartSession cartSession;
+
     public DrinkController(OrderService orderService, CartSession cartSession) {
         this.orderService = orderService;
         this.cartSession = cartSession;
@@ -31,22 +31,23 @@ private final CartSession cartSession;
 
     @GetMapping("/drinks")
     public ModelAndView searchDrink(@RequestParam(required = true) String drinkName) {
-            Set<Drink> drink = orderService.findDrinkByName(drinkName);
-            ModelAndView modelAndView = new ModelAndView("view");
-            modelAndView.addObject("drink", drink);
-            return modelAndView;
-    }
-    @GetMapping("/cart")
-    public ModelAndView basketProduct(@RequestParam(required = false) int id,@RequestParam(required = false) int availability){
-        Optional<Drink> byId = orderService.findById(id);
-        if(byId.isPresent()){
-            int substraction = orderService.getQuantity(id)-availability;
-        orderService.setQuantity(substraction);
-        }
-
-        ModelAndView modelAndView = new ModelAndView("home");
+        Set<Drink> drink = orderService.findDrinkByName(drinkName);
+        ModelAndView modelAndView = new ModelAndView("view");
+        modelAndView.addObject("drink", drink);
         return modelAndView;
     }
 
+    @GetMapping("/cart")
+    public ModelAndView basketProduct(@RequestParam(required = false) int id, @RequestParam(required = false) int availability) {
+        Optional<Drink> byId = orderService.findById(id);
+        if (byId.isPresent()) {
+            Drink drink = byId.get();
+            drink.setAvailability(drink.getAvailability() - availability);
+            orderService.save(drink);
+        }
+        ModelAndView modelAndView = new ModelAndView("home");
+        modelAndView.addObject("drinks", orderService.findAllDrink());
+        return modelAndView;
 
+    }
 }
