@@ -15,9 +15,12 @@
     <td>Pojemność: ${drink.volume}</td>
     <td>Cena: ${drink.price}</td>
     <td>Dostępność: ${drink.availability}</td></br>
-
-    <td><a href="/drink/${drink}"></a></td>
-
+    <td>Szt</td>
+    <form method="get" action="/cart">
+        <input name="availability"/>
+        <input name="id" value="${drink.id}" hidden/>
+        <input type="submit" value="add to cart"/>
+    </form>
 </tr>
 </c:forEach>
 
