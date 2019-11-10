@@ -1,6 +1,8 @@
 package com.example.shop.config;
 
 import com.example.shop.service.UserDetailsService;
+import com.example.shop.session.AutenticationSuccesHandler;
+import com.example.shop.session.UserSessionProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -8,14 +10,14 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
-import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
+
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
  private final UserDetailsService userDetailsService;
-
-    public SecurityConfig(UserDetailsService userDetailsService) {
+private final AutenticationSuccesHandler succesHandler;
+    public SecurityConfig(UserDetailsService userDetailsService, AutenticationSuccesHandler succesHandler) {
         this.userDetailsService = userDetailsService;
+        this.succesHandler = succesHandler;
     }
 
     @Override
@@ -29,7 +31,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin().loginPage("/login")
                 .usernameParameter("user")
                 .passwordParameter("password")
-                .successHandler(successHandler())
+                .successHandler(succesHandler)
                 .and()
                 .exceptionHandling()
                 .accessDeniedPage("/accessDenied")
@@ -51,9 +53,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
-    }
-    @Bean
-    AuthenticationSuccessHandler successHandler() {
-        return new SavedRequestAwareAuthenticationSuccessHandler();
     }
 }

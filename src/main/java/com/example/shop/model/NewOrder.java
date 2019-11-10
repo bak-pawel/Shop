@@ -9,9 +9,40 @@ public class NewOrder {
     @GeneratedValue(generator = "orderSeq")
     @SequenceGenerator(name = "orderSeq", sequenceName = "order_seq", allocationSize = 1)
     private int id;
-   // @ManyToOne
-   // private User user;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public boolean isFinished() {
+        return finished;
+    }
+
+    public void setFinished(boolean finished) {
+        this.finished = finished;
+    }
+
+    @ManyToOne
+    private User user;
 
     private boolean finished;
 
+    public NewOrder(User user) {
+        this.user = user;
+    }
+
+    public NewOrder() {
+    }
 }
