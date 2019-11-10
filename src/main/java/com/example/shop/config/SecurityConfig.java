@@ -1,5 +1,6 @@
 package com.example.shop.config;
 
+import com.example.shop.service.UserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -11,6 +12,12 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+ private final UserDetailsService userDetailsService;
+
+    public SecurityConfig(UserDetailsService userDetailsService) {
+        this.userDetailsService = userDetailsService;
+    }
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
@@ -32,11 +39,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .withUser("johnson").password(passwordEncoder().encode("123")).roles("USER", "ADMIN")
-                .and()
-                .withUser("user").password(passwordEncoder().encode("user")).roles("USER");
+        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
+
+//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.inMemoryAuthentication()
+//                .withUser("johnson").password(passwordEncoder().encode("123")).roles("USER", "ADMIN")
+//                .and()
+//                .withUser("user").password(passwordEncoder().encode("user")).roles("USER");
+//    }
     @Bean
     PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
