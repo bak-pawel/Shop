@@ -6,6 +6,7 @@
     <input name="drinkName"/>
     <input type="submit" value="Search"/>
 </form>
+<a href="/logout">Wyloguj</a>
 
 <a href="/cart">Cart</a></br></br>
 

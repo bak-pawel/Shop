@@ -2,7 +2,7 @@ package com.example.shop.controller;
 
 import com.example.shop.model.Drink;
 import com.example.shop.service.OrderService;
-import com.example.shop.session.CartSession;
+import com.example.shop.session.UserSessionProvider;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,10 +14,11 @@ import java.util.Set;
 @RestController
 public class DrinkController {
     private final OrderService orderService;
+    private final UserSessionProvider userSessionProvider;
 
-
-    public DrinkController(OrderService orderService, CartSession cartSession) {
+    public DrinkController(OrderService orderService, UserSessionProvider userSessionProvider) {
         this.orderService = orderService;
+        this.userSessionProvider = userSessionProvider;
     }
 
     @GetMapping("/")
@@ -44,8 +45,7 @@ public class DrinkController {
             Drink drink = byId.get();
             if (drink.getAvailability() >= availability) {
                 drink.setAvailability(drink.getAvailability() - availability);
-                orderService.save(drink,availability);
-
+                orderService.order(drink,availability);
             }
 
         }
