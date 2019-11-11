@@ -30,8 +30,9 @@ public class NewOrder {
         return finished;
     }
 
-    public void setFinished(boolean finished) {
+    public boolean setFinished(boolean finished) {
         this.finished = finished;
+        return true;
     }
 
     @ManyToOne
