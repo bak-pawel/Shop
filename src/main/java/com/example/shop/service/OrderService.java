@@ -89,6 +89,8 @@ public class OrderService {
         int availability = byId.get().getAvailability();
         byId.get().setAvailability(availability+one.getAmount());
         orderItemRepository.deleteById(itemId);
+
+
     }
 
 }
