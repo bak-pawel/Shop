@@ -18,7 +18,7 @@
         <td>Cena: ${drink.price}</td>
         <td>Dostępność: ${drink.availability}</td></br>
         <td>Szt</td>
-        <form method="get" action="/cart">
+        <form method="get" action="/addtocart">
             <input name="availability"/>
                 <input name="id" value="${drink.id}" hidden/>
             <input type="submit" value="add to cart"/>
