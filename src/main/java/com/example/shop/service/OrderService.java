@@ -83,9 +83,9 @@ public class OrderService {
         newOrder.setFinished(true);
         orderRepository.save(newOrder);
     }
-    public void delete(int itemId) {
+    public void delete(int drink, int itemId) {
         OrderItem one = orderItemRepository.getOne(itemId);
-        Optional<Drink> byId = drinkRepository.findById(itemId);
+        Optional<Drink> byId = drinkRepository.findById(drink);
         int availability = byId.get().getAvailability();
         byId.get().setAvailability(availability+one.getAmount());
         orderItemRepository.deleteById(itemId);
