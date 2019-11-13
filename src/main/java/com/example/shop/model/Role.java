@@ -7,7 +7,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import java.util.Objects;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 396e1405ce15cfefc850c2eda3854def14fa20af
 @Entity
 public class Role implements GrantedAuthority {
 
@@ -47,4 +50,8 @@ public class Role implements GrantedAuthority {
     public int hashCode() {
         return Objects.hash(id, authority);
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 396e1405ce15cfefc850c2eda3854def14fa20af

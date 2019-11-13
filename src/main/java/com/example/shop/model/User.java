@@ -3,6 +3,7 @@ package com.example.shop.model;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+<<<<<<< HEAD
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -69,13 +70,66 @@ public class User implements UserDetails {
     }
 
 
+=======
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+import javax.persistence.Entity;
+import java.util.Collection;
+import java.util.Collections;
+
+
+@Entity
+public class User implements UserDetails {
+    @Id
+    private String user;
+    private String password;
+    @ManyToOne(targetEntity = Role.class)
+    private Role role;
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public User() {
+    }
+
+    public User(String user, String password) {
+        this.user = user;
+        this.password = password;
+    }
+
+    public String getUser() {
+        return user;
+    }
+    public void setUser(String user) { this.user = user; }
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    public String getPassword(String password) { return password; }
+
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return Collections.singletonList(role);
+    }
+
+>>>>>>> 396e1405ce15cfefc850c2eda3854def14fa20af
     public String getPassword() {
         return password;
     }
 
     @Override
     public String getUsername() {
+<<<<<<< HEAD
         return login;
+=======
+        return user;
+>>>>>>> 396e1405ce15cfefc850c2eda3854def14fa20af
     }
 
     @Override
@@ -98,6 +152,7 @@ public class User implements UserDetails {
         return true;
     }
 
+<<<<<<< HEAD
     public void setPassword(String password) {
         this.password = password;
     }
@@ -119,3 +174,6 @@ public class User implements UserDetails {
         return Objects.hash(firstName, lastName, email, login, password);
     }
 }
+=======
+}
+>>>>>>> 396e1405ce15cfefc850c2eda3854def14fa20af
