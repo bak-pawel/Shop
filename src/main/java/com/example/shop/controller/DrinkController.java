@@ -74,10 +74,10 @@ public class DrinkController {
     }
 
     @GetMapping("/delete/{id}")
-    public ModelAndView delete(@PathVariable("id")Drink drink,@PathVariable("id")int itemId) {
+    public ModelAndView delete(@PathVariable("id")int itemId) {
         ModelAndView modelAndView = new ModelAndView("cart");
-        int id = drink.getId();
-        orderService.delete(id,itemId);
+
+        orderService.delete(itemId);
         Set<OrderItem> itemsInCart = orderService.printCart();
         modelAndView.addObject("itemsInCart", itemsInCart);
         return modelAndView;

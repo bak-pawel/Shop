@@ -83,12 +83,13 @@ public class OrderService {
         newOrder.setFinished(true);
         orderRepository.save(newOrder);
     }
-    public void delete(int drink, int itemId) {
+    public void delete(int itemId) {
         OrderItem one = orderItemRepository.getOne(itemId);
-        Optional<Drink> byId = drinkRepository.findById(drink);
+        Optional<Drink> byId = drinkRepository.findById(itemId);
         int availability = byId.get().getAvailability();
         byId.get().setAvailability(availability+one.getAmount());
         orderItemRepository.deleteById(itemId);
+    drinkRepository.save(byId.get());
 
 
     }

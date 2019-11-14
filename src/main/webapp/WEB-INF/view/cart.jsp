@@ -13,7 +13,7 @@
     <td>Nazwa: ${item.drink.name}</td></br>
     <td>Ilość: ${item.amount}</td>
     <td>Cena: ${item.drink.price}</td>
-    <a href="/delete/${item.drink}/${item.id}">Delete</a>
+    <a href="/delete/${item.id}">Delete</a>
 
 </tr>
 </c:forEach>
