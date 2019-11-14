@@ -6,7 +6,7 @@
     <input name="drinkName"/>
     <input type="submit" value="Search"/>
 </form>
-<a href="/logout">Wyloguj</a>
+<a href="/logout">Wyloguj</a></br>
 
 <a href="/cart">Cart</a></br></br>
 
@@ -21,7 +21,7 @@
         <form method="get" action="/addtocart">
             <input name="availability"/>
                 <input name="id" value="${drink.id}" hidden/>
-            <input type="submit" value="add to cart"/>
+            <input type="submit" value="add to cart"/></br></br></br>
         </form>
 
     </tr>
