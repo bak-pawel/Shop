@@ -3,17 +3,18 @@
 <html>
 <body>
 <h1>Twój koszyk: </h1>
-<a href="/">Back to home</a>
+<a href="/logout">Wyloguj</a></br></br>
+<a href="/">Back to home</a></br></br></br>
 
-<a href="/logout">Wyloguj</a>
+
 
 <c:forEach var="item" items="${itemsInCart}">
 <tr>
 
     <td>Nazwa: ${item.drink.name}</td></br>
     <td>Ilość: ${item.amount}</td>
-    <td>Cena: ${item.drink.price}</td>
-    <a href="/delete/${item.id}">Delete</a>
+    <td>Cena: ${item.drink.price}</td></br>
+    <a href="/delete/${item.id}">Delete</a></br></br></br>
 
 </tr>
 </c:forEach>

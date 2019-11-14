@@ -52,10 +52,12 @@ public class OrderService {
         Optional<NewOrder> cart = orderRepository.findByUser_UserAndFinishedIsFalse(loggedUser.getUsername());
         if (cart.isPresent()) {
             OrderItem item = new OrderItem();//element w koszu
-            item.setDrink(drink);
-            item.setAmount(orderedAmount);
-            item.setNewOrder(cart.get());
-            orderItemRepository.save(item);
+                item.setDrink(drink);
+                item.setAmount(orderedAmount);
+                item.setNewOrder(cart.get());
+                int id = drink.getId();
+                item.setId(id);
+                orderItemRepository.save(item);
         } else {
             NewOrder newOrder = new NewOrder(); // tworzymy nowe zamówienie
             newOrder.setUser(loggedUser); //ustawiamy usera dla tego zamówienia
@@ -64,6 +66,8 @@ public class OrderService {
             item.setDrink(drink); // ustawiamy element zamówiony w koszyku
             item.setAmount(orderedAmount); //ustawiamy ilość któeą klient zamówił
             item.setNewOrder(savedOrder); // ustawiamy zamówienie z produktem
+            int id = drink.getId();
+            item.setId(id);
             orderItemRepository.save(item); // zapisujemy element zamówienia
         }
     }
@@ -71,27 +75,27 @@ public class OrderService {
     public Set<OrderItem> printCart() {
 
         Optional<NewOrder> cart = orderRepository.findByUser_UserAndFinishedIsFalse(userSessionProvider.getLoggedUser().getUsername());
-        if(cart.isPresent()) {
+        if (cart.isPresent()) {
             return new HashSet<>(orderItemRepository.findByNewOrder(cart.get()));
-        }else {
+        } else {
             return new HashSet<>();
         }
     }
+
     public void buy() {
         Optional<NewOrder> cart = orderRepository.findByUser_UserAndFinishedIsFalse(userSessionProvider.getLoggedUser().getUsername());
         NewOrder newOrder = cart.get();
         newOrder.setFinished(true);
         orderRepository.save(newOrder);
     }
+
     public void delete(int itemId) {
         OrderItem one = orderItemRepository.getOne(itemId);
         Optional<Drink> byId = drinkRepository.findById(itemId);
         int availability = byId.get().getAvailability();
-        byId.get().setAvailability(availability+one.getAmount());
+        byId.get().setAvailability(availability + one.getAmount());
         orderItemRepository.deleteById(itemId);
-    drinkRepository.save(byId.get());
-
-
+        drinkRepository.save(byId.get());
     }
 
 }
