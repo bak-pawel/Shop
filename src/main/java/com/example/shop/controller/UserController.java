@@ -16,6 +16,10 @@ public class UserController {
     public ModelAndView getLoginPage() {
         return new ModelAndView("login");
     }
+    @GetMapping("/register")
+    public ModelAndView getRegisterPage(){
+        return new ModelAndView("register");
+    }
 
     @GetMapping("/admin")
     public ModelAndView getAdminPage() {
