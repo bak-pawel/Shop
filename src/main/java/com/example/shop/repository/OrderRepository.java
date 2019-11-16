@@ -7,5 +7,5 @@ import java.util.Optional;
 import java.util.Set;
 
 public interface OrderRepository extends JpaRepository <NewOrder,Integer> {
-    Optional<NewOrder> findByUser_UserAndFinishedIsFalse(String user);
+    Optional<NewOrder> findByUser_UserNameAndFinishedIsFalse(String user);
 }

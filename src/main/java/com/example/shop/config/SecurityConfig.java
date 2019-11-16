@@ -13,8 +13,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
- private final UserDetailsService userDetailsService;
-private final AutenticationSuccesHandler succesHandler;
+    private final UserDetailsService userDetailsService;
+    private final AutenticationSuccesHandler succesHandler;
     public SecurityConfig(UserDetailsService userDetailsService, AutenticationSuccesHandler succesHandler) {
         this.userDetailsService = userDetailsService;
         this.succesHandler = succesHandler;
@@ -25,6 +25,7 @@ private final AutenticationSuccesHandler succesHandler;
         http.csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/login").permitAll()
+                .antMatchers("/register").permitAll()
                 .antMatchers("/admin").hasRole("ADMIN")
                 .antMatchers("/h2-console/**").permitAll()
                 .antMatchers("/**").authenticated()
@@ -38,6 +39,8 @@ private final AutenticationSuccesHandler succesHandler;
                 .accessDeniedPage("/accessDenied").and()
                 .headers().frameOptions().disable()
                 .and()
+                .headers().frameOptions().disable()
+                .and()
                 .logout()
                 .logoutSuccessUrl("/login?logout");
     }
@@ -46,7 +49,7 @@ private final AutenticationSuccesHandler succesHandler;
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
 
-//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+    //    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 //        auth.inMemoryAuthentication()
 //                .withUser("johnson").password(passwordEncoder().encode("123")).roles("USER", "ADMIN")
 //                .and()
