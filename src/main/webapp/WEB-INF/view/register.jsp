@@ -13,26 +13,26 @@
         <table>
             <tr>
                 <td>First Name:</td>
-                <td><form:input path="firstName"/></td>
+                <td><form:input path="firstName" minlength="2" type="text" required="name"/></td>
             </tr>
             <tr>
                 <td>Last name:</td>
-                <td><form:input path="lastName" readonly="${update}"/></td>
+                <td><form:input path="lastName" minlength="2" type="text" required="text"/></td>
             </tr>
             <tr>
                 <td>Username:</td>
-                <td><form:input path="userName" readonly="${update}"/></td>
+                <td><form:input path="userName" minlength="2" type="text" required="text"/></td>
             </tr>
             <tr>
                 <td>Password:</td>
-                <td><form:input path="password" readonly="${update}"/></td>
+                <td><form:input path="password" minlength="2" type="password" required="password"/></td>
             </tr>
             <tr>
                 <td>Email:</td>
-                <td><form:input path="email" readonly="${update}"/></td>
+                <td><form:input path="email" minlength="2" type="email" required="email"/></td>
             </tr>
             <tr>
-                <td colspan='2'><input  name="submit" type="submit" value="Add"/></td>
+                <td colspan='2'><input name="submit" type="submit" value="Add"/></td>
             </tr>
         </table>
 
