@@ -1,5 +1,6 @@
 package com.example.shop.service;
 
+import com.example.shop.model.User;
 import com.example.shop.repository.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -18,4 +19,9 @@ public class UserDetailsService implements org.springframework.security.core.use
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         return userRepository.findById(s).orElseThrow(() -> new UsernameNotFoundException("Could not find user with username: " + s));
     }
+
+    public void saveUser(User user){
+        userRepository.save(user);
+    }
+
 }

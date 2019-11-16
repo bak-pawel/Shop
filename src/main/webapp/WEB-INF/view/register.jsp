@@ -1,43 +1,43 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
 <body>
 <div>
 
     <h3>Register</h3>
-
-    <form name='registerForm'
-          action="<c:url value='/register'/>" method='POST'>
+    <form:form name='registerForm' method="POST" action="/register" modelAttribute="user">
 
         <table>
             <tr>
-                <td>First name:</td>
-                <td><input class= type='text' name='username'></td>
+                <td>First Name:</td>
+                <td><form:input path="firstName"/></td>
             </tr>
             <tr>
                 <td>Last name:</td>
-                <td><input class= type='text' name='lastName'></td>
+                <td><form:input path="lastName" readonly="${update}"/></td>
             </tr>
             <tr>
-                <td>Email:</td>
-                <td><input class= type='text' name='email'></td>
-            </tr>
-            <tr>
-                <td>Login:</td>
-                <td><input class= type='text' name='login'></td>
+                <td>Username:</td>
+                <td><form:input path="userName" readonly="${update}"/></td>
             </tr>
             <tr>
                 <td>Password:</td>
-                <td><input type='password' name='password' /></td>
+                <td><form:input path="password" readonly="${update}"/></td>
             </tr>
             <tr>
-                <td colspan='2'><input  name="submit" type="submit" value="submit" /></td>
+                <td>Email:</td>
+                <td><form:input path="email" readonly="${update}"/></td>
+            </tr>
+            <tr>
+                <td colspan='2'><input  name="submit" type="submit" value="Add"/></td>
             </tr>
         </table>
 
-    </form>
+    </form:form>
+
     <a href="/login">Powrót do logowania</a>
 </div>
 

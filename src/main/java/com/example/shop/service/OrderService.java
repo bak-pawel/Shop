@@ -49,7 +49,7 @@ public class OrderService {
         drinkRepository.save(drink); //sciagamy ze stanu
         //pobierz niezrealizowany order dla zalogowanego usera, jesli nie ma to stworz nowy
         User loggedUser = userSessionProvider.getLoggedUser();
-        Optional<NewOrder> cart = orderRepository.findByUser_UserAndFinishedIsFalse(loggedUser.getUsername());
+        Optional<NewOrder> cart = orderRepository.findByUser_UserNameAndFinishedIsFalse(loggedUser.getUsername());
         if (cart.isPresent()) {
             OrderItem item = new OrderItem();//element w koszu
                 item.setDrink(drink);
@@ -74,7 +74,7 @@ public class OrderService {
 
     public Set<OrderItem> printCart() {
 
-        Optional<NewOrder> cart = orderRepository.findByUser_UserAndFinishedIsFalse(userSessionProvider.getLoggedUser().getUsername());
+        Optional<NewOrder> cart = orderRepository.findByUser_UserNameAndFinishedIsFalse(userSessionProvider.getLoggedUser().getUsername());
         if (cart.isPresent()) {
             return new HashSet<>(orderItemRepository.findByNewOrder(cart.get()));
         } else {
@@ -83,7 +83,7 @@ public class OrderService {
     }
 
     public void buy() {
-        Optional<NewOrder> cart = orderRepository.findByUser_UserAndFinishedIsFalse(userSessionProvider.getLoggedUser().getUsername());
+        Optional<NewOrder> cart = orderRepository.findByUser_UserNameAndFinishedIsFalse(userSessionProvider.getLoggedUser().getUsername());
         NewOrder newOrder = cart.get();
         newOrder.setFinished(true);
         orderRepository.save(newOrder);

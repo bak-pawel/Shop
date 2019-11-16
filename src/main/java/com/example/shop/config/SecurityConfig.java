@@ -27,6 +27,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/login").permitAll()
                 .antMatchers("/register").permitAll()
                 .antMatchers("/admin").hasRole("ADMIN")
+                .antMatchers("/h2-console/**").permitAll()
                 .antMatchers("/**").authenticated()
                 .and()
                 .formLogin().loginPage("/login")
@@ -36,6 +37,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .exceptionHandling()
                 .accessDeniedPage("/accessDenied")
+                .and()
+                .headers().frameOptions().disable()
                 .and()
                 .logout()
                 .logoutSuccessUrl("/login?logout");
