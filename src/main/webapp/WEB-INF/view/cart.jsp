@@ -3,25 +3,23 @@
 <html>
 <body>
 <h1>Twój koszyk: </h1>
+<a href="/logout">Wyloguj</a></br></br>
+<a href="/">Back to home</a></br></br></br>
 
-<a href="/logout">Wyloguj</a>
 
-<c:forEach var="drink" items="${drinks}">
-    <tr>
-        <td>Nazwa: ${drink.name}</td></br>
-        <td>Pojemność: ${drink.volume}</td>
-        <td>Cena: ${drink.price}</td>
-        <td>Dostępność: ${drink.availability}</td></br>
-        <td>Szt</td>
-        <form method="get" action="/cart">
-            <input name="availability"/>
-            <input name="id" value="${drink.id}" hidden/>
-            <input type="submit" value="Actuall"/>
-        </form>
 
-    </tr>
+<c:forEach var="item" items="${itemsInCart}">
+<tr>
+
+    <td>Nazwa: ${item.drink.name}</td></br>
+    <td>Ilość: ${item.amount}</td>
+    <td>Cena: ${item.drink.price}</td></br>
+    <a href="/delete/${item.id}">Delete</a></br></br></br>
+
+</tr>
 </c:forEach>
 
+<a href="/buy">Buy</a>
 
 
 

@@ -21,6 +21,9 @@
         </tr>
     </table>
     <input type="submit" value="submit" name="Zaloguj" />
+    <br>
+    <h1>Formularz rejestracji</h1>
+    <a href="/register">Zarejestruj się!</a>
 </form>
 </body>
 </html>

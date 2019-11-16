@@ -9,6 +9,4 @@ import java.util.Set;
 public interface DrinkRepository extends JpaRepository <Drink, Integer> {
 
     Set<Drink> findDrinkByName(String drinkName);
-
-    Optional<Drink> findById(Drink id);
 }
