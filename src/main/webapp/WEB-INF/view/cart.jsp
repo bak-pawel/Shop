@@ -11,13 +11,16 @@
 <c:forEach var="item" items="${itemsInCart}">
 <tr>
 
-    <td>Nazwa: ${item.drink.name}</td></br>
+    <td>Nazwa: ${item.drink.name}</td>
     <td>Ilość: ${item.amount}</td>
-    <td>Cena: ${item.drink.price}</td></br>
+    <td>Cena za szt: ${item.drink.price}zł</td>
+    <td>Cena: ${item.amount*item.drink.price}zł</td>
     <a href="/delete/${item.id}">Delete</a></br></br></br>
 
 </tr>
 </c:forEach>
+
+
 
 <a href="/buy">Buy</a>
 
