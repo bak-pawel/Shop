@@ -7,6 +7,8 @@ import java.util.Objects;
 public class OrderItem {
 
     @Id
+    @GeneratedValue(generator = "orderItemSeq")
+    @SequenceGenerator(name = "orderItemSeq", sequenceName = "orderItem_Seq", allocationSize = 1)
     private int id;
     @ManyToOne
     private NewOrder newOrder;

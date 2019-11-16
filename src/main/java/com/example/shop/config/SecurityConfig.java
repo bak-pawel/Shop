@@ -26,6 +26,7 @@ private final AutenticationSuccesHandler succesHandler;
                 .authorizeRequests()
                 .antMatchers("/login").permitAll()
                 .antMatchers("/admin").hasRole("ADMIN")
+                .antMatchers("/h2-console/**").permitAll()
                 .antMatchers("/**").authenticated()
                 .and()
                 .formLogin().loginPage("/login")
@@ -34,7 +35,8 @@ private final AutenticationSuccesHandler succesHandler;
                 .successHandler(succesHandler)
                 .and()
                 .exceptionHandling()
-                .accessDeniedPage("/accessDenied")
+                .accessDeniedPage("/accessDenied").and()
+                .headers().frameOptions().disable()
                 .and()
                 .logout()
                 .logoutSuccessUrl("/login?logout");

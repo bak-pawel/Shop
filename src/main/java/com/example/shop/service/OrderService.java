@@ -51,13 +51,18 @@ public class OrderService {
         User loggedUser = userSessionProvider.getLoggedUser();
         Optional<NewOrder> cart = orderRepository.findByUser_UserAndFinishedIsFalse(loggedUser.getUsername());
         if (cart.isPresent()) {
-            OrderItem item = new OrderItem();//element w koszu
+            Optional<OrderItem> byDrink_idAndNewOrder_id = orderItemRepository.findByDrink_IdAndNewOrder_Id(drink.getId(), cart.get().getId());
+            if(byDrink_idAndNewOrder_id.isPresent()){
+                OrderItem item = byDrink_idAndNewOrder_id.get();
+                item.setAmount(item.getAmount()+orderedAmount);
+                orderItemRepository.save(item);
+            }else {
+                OrderItem item = new OrderItem();//element w koszu
                 item.setDrink(drink);
                 item.setAmount(orderedAmount);
                 item.setNewOrder(cart.get());
-                int id = drink.getId();
-                item.setId(id);
                 orderItemRepository.save(item);
+            }
         } else {
             NewOrder newOrder = new NewOrder(); // tworzymy nowe zamówienie
             newOrder.setUser(loggedUser); //ustawiamy usera dla tego zamówienia
@@ -66,8 +71,6 @@ public class OrderService {
             item.setDrink(drink); // ustawiamy element zamówiony w koszyku
             item.setAmount(orderedAmount); //ustawiamy ilość któeą klient zamówił
             item.setNewOrder(savedOrder); // ustawiamy zamówienie z produktem
-            int id = drink.getId();
-            item.setId(id);
             orderItemRepository.save(item); // zapisujemy element zamówienia
         }
     }
@@ -91,7 +94,7 @@ public class OrderService {
 
     public void delete(int itemId) {
         OrderItem one = orderItemRepository.getOne(itemId);
-        Optional<Drink> byId = drinkRepository.findById(itemId);
+        Optional<Drink> byId = drinkRepository.findById(one.getDrink().getId());
         int availability = byId.get().getAvailability();
         byId.get().setAvailability(availability + one.getAmount());
         orderItemRepository.deleteById(itemId);
