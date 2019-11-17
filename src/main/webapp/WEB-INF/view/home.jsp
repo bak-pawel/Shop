@@ -10,28 +10,24 @@
 <head>
 </head>
 <body>
-<form method="get"  action="/drinks">
-    <input name="drinkName"/>
-    <input type="submit" value="Search"/>
-</form>
-<a href="/logout">Wyloguj</a></br>
-
-<a href="/cart">Cart</a></br></br>
-
-<c:forEach var="drink" items="${drinks}">
-<div class="w3-container w3-teal">
-    <h1>${drink.name}</h1>
+<div class="w3-container w3-blue w3-center">
+    <h1>Sklep z wodą</h1>
 </div>
-
+</br>
+<a href="/logout" class="w3-button w3-blue w3-ripple w3-right">Wyloguj</a></br></br>
+<a href="/cart" class="w3-button w3-blue w3-ripple w3-right">Koszyk</a>
+<c:forEach var="drink" items="${drinks}">
 <div class="w3-content">
 
     <div class="w3-row w3-margin">
-
-        <div class="w3-third">
-            <img src="img/${drink.id}.jpg" style="width:50%;min-height:100px">
+        <div class="w3-container  w3-blue">
+            <h1>${drink.name}</h1>
         </div>
-        <div class="w3-twothird w3-container">
 
+        <div class="w3-twothird w3-container">
+            <div class="w3-third">
+                <img src="img/${drink.id}.jpg" style="width:50%;min-height:100px">
+            </div>
             <p>
             <td>Pojemność: ${drink.volume}</td></br>
             <td>Cena: ${drink.price}</td></br>
@@ -39,13 +35,17 @@
             </p>
         </div>
         <form method="get" action="/addtocart">
-            <input name="availability"/>
+            <input name="availability" class="w3-section w3-ripple  " style="height: 37px;width: 50px"/>
             <input name="id" value="${drink.id}" hidden/>
-            <input class="w3-button w3-section w3-blue w3-ripple" type="submit" value="add to cart"/></br></br></br>
+            <input class="w3-button w3-section w3-blue w3-ripple" type="submit" value="Dodaj do koszyka"/></br></br></br>
         </form>
+
 
     </div>
 </c:forEach>
+    <div class="w3-container  w3-blue">
+        <h1>Niestety na chwilę obecną to wszystkie nasze produkty</h1>
+    </div>
 
 </body>
 </html>
