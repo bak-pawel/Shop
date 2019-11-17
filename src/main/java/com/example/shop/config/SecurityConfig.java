@@ -2,7 +2,6 @@ package com.example.shop.config;
 
 import com.example.shop.service.UserDetailsService;
 import com.example.shop.session.AutenticationSuccesHandler;
-import com.example.shop.session.UserSessionProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -26,8 +25,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/login").permitAll()
                 .antMatchers("/register").permitAll()
+                .antMatchers("/").permitAll()
                 .antMatchers("/admin").hasRole("ADMIN")
                 .antMatchers("/h2-console/**").permitAll()
+                .antMatchers("/img/**").permitAll()
                 .antMatchers("/**").authenticated()
                 .and()
                 .formLogin().loginPage("/login")
@@ -36,12 +37,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .successHandler(succesHandler)
                 .and()
                 .exceptionHandling()
-                .accessDeniedPage("/accessDenied")
-                .and()
+                .accessDeniedPage("/accessDenied").and()
                 .headers().frameOptions().disable()
                 .and()
                 .logout()
-                .logoutSuccessUrl("/login?logout");
+                .logoutSuccessUrl("/");
     }
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {

@@ -1,6 +1,6 @@
 insert into DRINK (id, type_id, name, volume,price,availability) values (nextval('drink_seq'), 1,'Żywiec Zdrój',500,1.99,5);
-insert into DRINK (id, type_id, name, volume, price,availability) values (nextval('drink_seq'), 1,'Żywiec Zdrój',1000, 2.00, 14);
 insert into DRINK (id, type_id, name, volume, price,availability) values (nextval('drink_seq'), 1,'Żywiec Zdrój',1500, 1.59, 28);
+insert into DRINK (id, type_id, name, volume, price,availability) values (nextval('drink_seq'), 1,'Żywiec Zdrój',5000, 4.00, 14);
 insert into DRINK (id, type_id, name, volume, price,availability) values (nextval('drink_seq'), 1,'Bystry Zdrój',500, 1.65, 24);
 insert into DRINK (id, type_id, name, volume, price,availability) values (nextval('drink_seq'), 1,'Bystry Zdrój',1000, 1.38, 16);
 insert into DRINK (id, type_id, name, volume, price,availability) values (nextval('drink_seq'), 1,'Bystry Zdrój',1500, 1.05, 48);

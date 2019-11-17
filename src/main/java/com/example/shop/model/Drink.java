@@ -14,6 +14,7 @@ public class Drink  {
    private int volume;
    private double price;
     private int availability;
+    private String picture;
 
 
     public int getAvailability() {

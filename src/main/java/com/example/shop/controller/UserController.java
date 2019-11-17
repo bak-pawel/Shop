@@ -1,9 +1,9 @@
 package com.example.shop.controller;
 
+import com.example.shop.service.UserDetailsService;
 import com.example.shop.model.Role;
 import com.example.shop.model.User;
 import com.example.shop.repository.RoleRepository;
-import com.example.shop.service.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,9 +24,6 @@ public class UserController {
         this.passwordEncoder = passwordEncoder;
         this.roleRepository = roleRepository;
     }
-
-
-
     @GetMapping("/login")
     public ModelAndView getLoginPage() {
         return new ModelAndView("login");
