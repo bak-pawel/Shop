@@ -25,8 +25,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/login").permitAll()
                 .antMatchers("/register").permitAll()
+                .antMatchers("/").permitAll()
                 .antMatchers("/admin").hasRole("ADMIN")
                 .antMatchers("/h2-console/**").permitAll()
+                .antMatchers("/img/**").permitAll()
                 .antMatchers("/**").authenticated()
                 .and()
                 .formLogin().loginPage("/login")
@@ -38,10 +40,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .accessDeniedPage("/accessDenied").and()
                 .headers().frameOptions().disable()
                 .and()
-                .headers().frameOptions().disable()
-                .and()
                 .logout()
-                .logoutSuccessUrl("/login?logout");
+                .logoutSuccessUrl("/");
     }
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
