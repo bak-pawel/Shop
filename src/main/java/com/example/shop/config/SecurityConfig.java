@@ -2,7 +2,6 @@ package com.example.shop.config;
 
 import com.example.shop.service.UserDetailsService;
 import com.example.shop.session.AutenticationSuccesHandler;
-import com.example.shop.session.UserSessionProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;

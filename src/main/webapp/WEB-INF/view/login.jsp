@@ -3,11 +3,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
+<body>
 <head>
     <meta charset="ISO-8859-1">
     <title>Formularz logowania</title>
 </head>
-<body>
 <h1>Formularz logowania</h1>
 <form action="<c:url value='/login' />" method="post">
     <table style="with: 100%">
