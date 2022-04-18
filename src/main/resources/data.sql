@@ -1,34 +1,33 @@
-insert into DRINK (id, type_id, name, volume,price,availability) values (nextval('drink_seq'), 1,'Żywiec Zdrój',500,1.99,5);
-insert into DRINK (id, type_id, name, volume, price,availability) values (nextval('drink_seq'), 1,'Żywiec Zdrój',1500, 1.59, 28);
-insert into DRINK (id, type_id, name, volume, price,availability) values (nextval('drink_seq'), 1,'Żywiec Zdrój',5000, 4.00, 14);
-insert into DRINK (id, type_id, name, volume, price,availability) values (nextval('drink_seq'), 1,'Bystry Zdrój',500, 1.65, 24);
-insert into DRINK (id, type_id, name, volume, price,availability) values (nextval('drink_seq'), 1,'Bystry Zdrój',1000, 1.38, 16);
-insert into DRINK (id, type_id, name, volume, price,availability) values (nextval('drink_seq'), 1,'Bystry Zdrój',1500, 1.05, 48);
-insert into DRINK (id, type_id, name, volume, price,availability) values (nextval('drink_seq'), 1,'Cisowianka',500, 0.77, 582);
-insert into DRINK (id, type_id, name, volume, price,availability) values (nextval('drink_seq'), 1,'Cisowianka',1000, 1.42, 423);
-insert into DRINK (id, type_id, name, volume, price,availability) values (nextval('drink_seq'), 1,'Cisowianka',1500, 1.59, 300);
+insert into DRINK (id, type_id, name, volume,price,availability) values (nextval('drink_seq'), 1,'Rezystor 5ohm',100,7.00,5000);
+insert into DRINK (id, type_id, name, volume, price,availability) values (nextval('drink_seq'), 1,'Rezystor 5ohm',1000, 65.00, 2800);
+insert into DRINK (id, type_id, name, volume, price,availability) values (nextval('drink_seq'), 1,'Rezystor 5ohm',5000, 300.00, 1400);
+insert into DRINK (id, type_id, name, volume, price,availability) values (nextval('drink_seq'), 1,'Rezystor 6ohm',100, 7.00, 2400);
+insert into DRINK (id, type_id, name, volume, price,availability) values (nextval('drink_seq'), 1,'Rezystor 6ohm',1000, 65.00, 1600);
+insert into DRINK (id, type_id, name, volume, price,availability) values (nextval('drink_seq'), 1,'Rezystor 6ohm',5000, 300.00, 4800);
+insert into DRINK (id, type_id, name, volume, price,availability) values (nextval('drink_seq'), 1,'Rezystor 2ohm',100, 6.87, 5820);
+insert into DRINK (id, type_id, name, volume, price,availability) values (nextval('drink_seq'), 1,'Rezystor 2ohm',1000, 62.98, 4230);
+insert into DRINK (id, type_id, name, volume, price,availability) values (nextval('drink_seq'), 1,'Rezystor 2ohm',5000, 285.02, 3000);
 
-insert into DRINK (id, type_id, name,volume, price,availability) values (nextval('drink_seq'), 2,'Coca Cola',500, 2.99, 328);
-insert into DRINK (id, type_id, name,volume, price,availability) values (nextval('drink_seq'), 2,'Coca Cola',1000, 3.59, 400);
-insert into DRINK (id, type_id, name,volume, price,availability) values (nextval('drink_seq'), 2,'Coca Cola',1500, 4.59, 128);
-insert into DRINK (id, type_id, name,volume, price,availability) values (nextval('drink_seq'), 2,'Pepsi',500, 2.79, 350);
-insert into DRINK (id, type_id, name,volume, price,availability) values (nextval('drink_seq'), 2,'Pepsi',1000, 3.35, 185);
-insert into DRINK (id, type_id, name,volume, price,availability) values (nextval('drink_seq'), 2,'Pepsi',1500, 4.25, 240);
+insert into DRINK (id, type_id, name,volume, price,availability) values (nextval('drink_seq'), 2,'Kondensator ceramiczny 4,7nF',100, 8.99, 3280);
+insert into DRINK (id, type_id, name,volume, price,availability) values (nextval('drink_seq'), 2,'Kondensator ceramiczny 4,7nF',1000, 85.45, 4000);
+insert into DRINK (id, type_id, name,volume, price,availability) values (nextval('drink_seq'), 2,'Kondensator ceramiczny 4,7nF',5000, 404.59, 1280);
+insert into DRINK (id, type_id, name,volume, price,availability) values (nextval('drink_seq'), 2,'Kondensator ceramiczny 47nF',100, 8.79, 3500);
+insert into DRINK (id, type_id, name,volume, price,availability) values (nextval('drink_seq'), 2,'Kondensator ceramiczny 47nF',1000, 85.35, 1805);
+insert into DRINK (id, type_id, name,volume, price,availability) values (nextval('drink_seq'), 2,'Kondensator ceramiczny 47nF',5000, 400.25, 2400);
 
-insert into DRINK (id, type_id, name,volume, price,availability) values (nextval('drink_seq'), 3,'Cappy pomarańczowy',330, 2.42, 600);
-insert into DRINK (id, type_id, name,volume, price,availability) values (nextval('drink_seq'), 3,'Cappy pomarańczowy',1000, 4.55, 329);
-insert into DRINK (id, type_id, name,volume, price,availability) values (nextval('drink_seq'), 3,'Cappy pomarańczowy',1500, 5.59, 58);
-insert into DRINK (id, type_id, name,volume, price,availability) values (nextval('drink_seq'), 3,'Hortex pomarańczowy',500, 2.99, 530);
-insert into DRINK (id, type_id, name,volume, price,availability) values (nextval('drink_seq'), 3,'Hortex pomarańczowy',1000, 4.59, 312);
-insert into DRINK (id, type_id, name,volume, price,availability) values (nextval('drink_seq'), 3,'Hortex pomarańczowy',1500, 5.35, 120);
-insert into DRINK (id, type_id, name,volume, price,availability) values (nextval('drink_seq'), 3,'Garden jabłkowy',500, 2.85, 100);
-insert into DRINK (id, type_id, name,volume, price,availability) values (nextval('drink_seq'), 3,'Garden jabłkowy',1000, 3.69, 250);
-insert into DRINK (id, type_id, name,volume, price,availability) values (nextval('drink_seq'), 3,'Garden jabłkowy',1500, 4.99, 327);
+insert into DRINK (id, type_id, name,volume, price,availability) values (nextval('drink_seq'), 3,'Tranzystor K50T60',100, 2.42, 6000);
+insert into DRINK (id, type_id, name,volume, price,availability) values (nextval('drink_seq'), 3,'Tranzystor K50T60',1000, 4.55, 3029);
+insert into DRINK (id, type_id, name,volume, price,availability) values (nextval('drink_seq'), 3,'Tranzystor K50T60',5000, 5.59, 508);
+insert into DRINK (id, type_id, name,volume, price,availability) values (nextval('drink_seq'), 3,'Tranzystor SKW 25N120',100, 2.99, 5030);
+insert into DRINK (id, type_id, name,volume, price,availability) values (nextval('drink_seq'), 3,'Tranzystor SKW 25N120',1000, 4.59, 3012);
+insert into DRINK (id, type_id, name,volume, price,availability) values (nextval('drink_seq'), 3,'Tranzystor SKW 25N120',5000, 5.35, 1020);
+insert into DRINK (id, type_id, name,volume, price,availability) values (nextval('drink_seq'), 3,'Tranzystor IRF 630',100, 2.85, 1000);
+insert into DRINK (id, type_id, name,volume, price,availability) values (nextval('drink_seq'), 3,'Tranzystor IRF 630',1000, 3.69, 2500);
+insert into DRINK (id, type_id, name,volume, price,availability) values (nextval('drink_seq'), 3,'Tranzystor IRF 630',5000, 4.99, 3207);
 
 insert into ROLE (id, authority) values (nextval('role_seq'), 'USER');
 insert into ROLE (id, authority) values (nextval('role_seq'), 'ADMIN');
 insert into ROLE (id, authority) values (nextval('role_seq'), 'SUPERUSER');
-
 
 insert INTO USER (user_name, password, role_id) values ('user', '$2a$10$KvxPudrieuxpEgxw3e4yPOuYK59PgfQshx3RaVUTCpbKB82DC/0RC', 1);
 insert INTO USER (user_name, password, role_id) values ('admin', '$2a$10$IPJizmA0rxJBq9incE/PWub6B2nIDGm3z/2cIz6hAs/hgvKlQ5F9q', 2);

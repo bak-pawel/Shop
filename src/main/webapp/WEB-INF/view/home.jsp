@@ -10,42 +10,174 @@
 <head>
 </head>
 <body>
-<div class="w3-container w3-blue w3-center">
-    <h1>Sklep z wodą</h1>
+</br></br>
+<div class="w3-container w3-grey w3-center">
+    <h1><b>PABLITO</b></h1>
+    <h1>Witaj na naszej stronie.</h1>
 </div>
-</br>
-<a href="/logout" class="w3-button w3-blue w3-ripple w3-right">Wyloguj</a></br></br>
-<a href="/cart" class="w3-button w3-blue w3-ripple w3-right">Koszyk</a>
-<c:forEach var="drink" items="${drinks}">
-<div class="w3-content">
-
-    <div class="w3-row w3-margin">
-        <div class="w3-container  w3-blue">
-            <h1>${drink.name}</h1>
-        </div>
-
-        <div class="w3-twothird w3-container">
-            <div class="w3-third">
-                <img src="img/${drink.id}.jpg" style="width:50%;min-height:100px">
+</br></br></br></br>
+    <div align="center">
+        <form align="center" style="width: 800px" action="/" method="get" class="w3-container w3-card-4 w3-light-grey w3-text-grey w3-margin">
+            <div class="center-pill">
+                <h1 class="w3-center w3-grey">Logowanie</h1>
             </div>
-            <p>
-            <td>Pojemność: ${drink.volume}</td></br>
-            <td>Cena: ${drink.price}</td></br>
-            <td>Dostępność: ${drink.availability} Szt</td></br>
-            </p>
-        </div>
-        <form method="get" action="/addtocart">
-            <input name="availability" class="w3-section w3-ripple  " style="height: 37px;width: 50px"/>
-            <input name="id" value="${drink.id}" hidden/>
-            <input class="w3-button w3-section w3-blue w3-ripple" type="submit" value="Dodaj do koszyka"/></br></br></br>
+            <div  class="w3-container w3-card-4 w3-light-grey w3-text-grey w3-margin">
+                <div class="w3-row w3-section w3-center">
+                    <div class="w3-col"><i class="w3-xxlarge"></i></div>
+                    <div class="w3-rest">
+                        <tr>
+                            <td>Zaloguj się, aby w pełnym zakresie przeglądać stronę.</td>
+                        </tr>
+                    </div>
+                </div>
+            </div>
+            <div class="w3-row w3-section w3-center">
+                <div class="w3-col" style="width:100px"><i class="w3-xxlarge "></i></div>
+                <div class="w3-rest">
+                    <a href="/login" class="w3-button w3-grey w3-ripple w3-center">Zaloguj</a>
+                </div>
+            </div>
         </form>
-
-
-    </div>
-</c:forEach>
-    <div class="w3-container  w3-blue">
-        <h1>Niestety na chwilę obecną to wszystkie nasze produkty</h1>
-    </div>
-
+    </div> </br></br>
+<div align="center">
+    <form align="center" style="width: 800px" action="/" method="get" class="w3-container w3-card-4 w3-light-grey w3-text-grey w3-margin">
+        <div class="center-pill">
+            <h1 class="w3-center w3-grey">Rejestracja</h1>
+        </div>
+        <div  class="w3-container w3-card-4 w3-light-grey w3-text-grey w3-margin">
+            <div class="w3-row w3-section w3-center">
+                <div class="w3-col"><i class="w3-xxlarge"></i></div>
+                <div class="w3-rest">
+                    <tr>
+                        <td>Nie masz konta? To nie problem, kliknij poniższy przycisk.</td>
+                    </tr>
+                </div>
+            </div>
+        </div>
+        <div class="w3-row w3-section w3-center">
+            <div class="w3-col" style="width:100px"><i class="w3-xxlarge "></i></div>
+            <div class="w3-rest">
+                <a href="/register" class="w3-button w3-grey w3-ripple w3-center">Rejestracja</a>
+            </div>
+        </div>
+    </form>
+</div></br></br>
+<div align="center">
+    <form align="center" style="width: 800px" action="/" method="get" class="w3-container w3-card-4 w3-light-grey w3-text-grey w3-margin">
+        <div class="center-pill">
+            <h1 class="w3-center w3-grey">Sklep</h1>
+        </div>
+        <div  class="w3-container w3-card-4 w3-light-grey w3-text-grey w3-margin">
+            <div class="w3-row w3-section w3-center">
+                <div class="w3-col"><i class="w3-xxlarge"></i></div>
+                <div class="w3-rest">
+                    <tr>
+                        <td>Chciałbyś kupić elementy elektrotechniczne, zapraszamy!</td>
+                    </tr>
+                </div>
+            </div>
+        </div>
+        <div class="w3-row w3-section w3-center">
+            <div class="w3-col" style="width:100px"><i class="w3-xxlarge "></i></div>
+            <div class="w3-rest">
+                <a href="/store" class="w3-button w3-grey w3-ripple w3-center">Sklep</a>
+            </div>
+        </div>
+    </form>
+</div></br></br>
+<div align="center">
+    <form align="center" style="width: 800px" action="/" method="get" class="w3-container w3-card-4 w3-light-grey w3-text-grey w3-margin">
+        <div class="center-pill">
+            <h1 class="w3-center w3-grey">Koszyk</h1>
+        </div>
+        <div  class="w3-container w3-card-4 w3-light-grey w3-text-grey w3-margin">
+            <div class="w3-row w3-section w3-center">
+                <div class="w3-col"><i class="w3-xxlarge"></i></div>
+                <div class="w3-rest">
+                    <tr>
+                        <td>Chciałbyś sprawdzić co znajdowało się w koszyku podczas poprzedniej sesji, kliknij.</td>
+                    </tr>
+                </div>
+            </div>
+        </div>
+        <div class="w3-row w3-section w3-center">
+            <div class="w3-col" style="width:100px"><i class="w3-xxlarge "></i></div>
+            <div class="w3-rest">
+                <a href="/cart" class="w3-button w3-grey w3-ripple w3-center">Koszyk</a>
+            </div>
+        </div>
+    </form>
+</div></br></br>
+<div align="center">
+    <form align="center" style="width: 800px" action="/" method="get" class="w3-container w3-card-4 w3-light-grey w3-text-grey w3-margin">
+        <div class="center-pill">
+            <h1 class="w3-center w3-grey">Dobór zabezpieczenia</h1>
+        </div>
+        <div  class="w3-container w3-card-4 w3-light-grey w3-text-grey w3-margin">
+            <div class="w3-row w3-section w3-center">
+                <div class="w3-col"><i class="w3-xxlarge"></i></div>
+                <div class="w3-rest">
+                    <tr>
+                        <td>Chciałbyś dobrać zabezpieczenie, ale nie wiesz jakie,
+                            wystarczy że podasz moc urządzenia bądź urządzeń podłączonych do danego obwodu,
+                            a system obliczy wielkośc zabezpieczenia </td>
+                    </tr>
+                </div>
+            </div>
+        </div>
+        <div class="w3-row w3-section w3-center">
+            <div class="w3-col" style="width:100px"><i class="w3-xxlarge "></i></div>
+            <div class="w3-rest">
+                <a href="/braker" class="w3-button w3-grey w3-ripple w3-center">Dobór zabezpieczenia</a>
+            </div>
+        </div>
+    </form>
+</div></br></br>
+<div align="center">
+    <form align="center" style="width: 800px" action="/" method="get" class="w3-container w3-card-4 w3-light-grey w3-text-grey w3-margin">
+        <div class="center-pill">
+            <h1 class="w3-center w3-grey">Obliczenie spadku napięcia</h1>
+        </div>
+        <div  class="w3-container w3-card-4 w3-light-grey w3-text-grey w3-margin">
+            <div class="w3-row w3-section w3-center">
+                <div class="w3-col"><i class="w3-xxlarge"></i></div>
+                <div class="w3-rest">
+                    <tr>
+                        <td>chciałbyś dowiedzieć sią jaki będzie spadek napięcia w kablu, podając niezbędne dane system wyliczy tą informację w dośc precyzyjny sposób.</td>
+                    </tr>
+                </div>
+            </div>
+        </div>
+        <div class="w3-row w3-section w3-center">
+            <div class="w3-col" style="width:100px"><i class="w3-xxlarge "></i></div>
+            <div class="w3-rest">
+                <a href="/lowVoltage" class="w3-button w3-grey w3-ripple w3-center">Spadek napięcia</a>
+            </div>
+        </div>
+    </form>
+</div></br></br>
+<div align="center">
+    <form align="center" style="width: 800px" action="/" method="get" class="w3-container w3-card-4 w3-light-grey w3-text-grey w3-margin">
+        <div class="center-pill">
+            <h1 class="w3-center w3-grey">Kontakt</h1>
+        </div>
+        <div  class="w3-container w3-card-4 w3-light-grey w3-text-grey w3-margin">
+            <div class="w3-row w3-section w3-center">
+                <div class="w3-col"><i class="w3-xxlarge"></i></div>
+                <div class="w3-rest">
+                    <tr>
+                        <td>Jeśli masz pyatnia wszystkie dane znajdziessz tutaj</td>
+                    </tr>
+                </div>
+            </div>
+        </div>
+        <div class="w3-row w3-section w3-center">
+            <div class="w3-col" style="width:100px"><i class="w3-xxlarge "></i></div>
+            <div class="w3-rest">
+                <a href="/contact" class="w3-button w3-grey w3-ripple w3-center">Kontakt</a>
+            </div>
+        </div>
+    </form>
+</div></br></br>
 </body>
 </html>

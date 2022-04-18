@@ -26,6 +26,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/login").permitAll()
                 .antMatchers("/register").permitAll()
                 .antMatchers("/").permitAll()
+                .antMatchers("/contact").permitAll()
+                .antMatchers("/store").permitAll()
+                .antMatchers("/braker").permitAll()
+                .antMatchers("/lowVoltage").permitAll()
                 .antMatchers("/admin").hasRole("ADMIN")
                 .antMatchers("/h2-console/**").permitAll()
                 .antMatchers("/img/**").permitAll()
@@ -47,13 +51,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
-
-    //    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.inMemoryAuthentication()
-//                .withUser("johnson").password(passwordEncoder().encode("123")).roles("USER", "ADMIN")
-//                .and()
-//                .withUser("user").password(passwordEncoder().encode("user")).roles("USER");
-//    }
     @Bean
     PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
