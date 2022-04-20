@@ -14,11 +14,11 @@ import java.util.Optional;
 import java.util.Set;
 
 @RestController
-public class DrinkController {
+public class ItemController {
     private final OrderService orderService;
     private final UserSessionProvider userSessionProvider;
 
-    public DrinkController(OrderService orderService, UserSessionProvider userSessionProvider) {
+    public ItemController(OrderService orderService, UserSessionProvider userSessionProvider) {
         this.orderService = orderService;
         this.userSessionProvider = userSessionProvider;
     }
