@@ -24,17 +24,17 @@
 
     <div class="w3-row w3-margin">
         <div class="w3-container  w3-light-grey">
-            <h1>${item.drink.name}</h1></br>
+            <h1>${item.item.name}</h1></br>
         </div>
 
         <div class="w3-twothird w3-container">
             <div class="w3-third">
-                <img src="img/${item.drink.id}.jpg" style="width:50%;min-height:100px">
+                <img src="img/${item.item.id}.jpg" style="width:50%;min-height:100px">
             </div>
             <p>
             <td>Ilość: ${item.amount}</td>
-            <td>Cena za szt: ${item.drink.price}zł</td></br>
-            <td>Suma: ${item.amount*item.drink.price}zł</td>
+            <td>Cena za szt: ${item.item.price}zł</td></br>
+            <td>Suma: ${item.amount*item.item.price}zł</td>
             </p>
         </div>
         </br>
@@ -44,7 +44,7 @@
     </c:forEach>
     </br></br></br>
     <a href="/buy" class="w3-button w3-grey w3-light-grey w3-right">Buy</a>
-    <a href="/" class="w3-button w3-grey w3-light-grey w3-left">Powrót do zakupów</a>
+    <a href="/store" class="w3-button w3-grey w3-light-grey w3-left">Powrót do zakupów</a>
 
 </body>
 </html>

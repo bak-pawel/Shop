@@ -1,6 +1,6 @@
 package com.example.shop.controller;
 
-import com.example.shop.model.Drink;
+import com.example.shop.model.Item;
 import com.example.shop.model.OrderItem;
 import com.example.shop.service.OrderService;
 import com.example.shop.session.UserSessionProvider;
@@ -27,35 +27,36 @@ public class DrinkController {
         ModelAndView modelAndView = new ModelAndView("home");
         return modelAndView;
     }
+
     @GetMapping("/store")
     public ModelAndView searchDrinkView() {
-        Set<Drink> drinks = orderService.findAllDrink();
+        Set<Item> items = orderService.findAllItem();
         ModelAndView modelAndView = new ModelAndView("store");
-        modelAndView.addObject("drinks", drinks);
+        modelAndView.addObject("items", items);
         return modelAndView;
     }
 
-    @GetMapping("/drinks")
+    @GetMapping("/items")
     public ModelAndView searchDrink(@RequestParam(required = true) String drinkName) {
-        Set<Drink> drink = orderService.findDrinkByName(drinkName);
+        Set<Item> item = orderService.findItemByName(drinkName);
         ModelAndView modelAndView = new ModelAndView("view");
-        modelAndView.addObject("drink", drink);
+        modelAndView.addObject("item", item);
         return modelAndView;
     }
 
     @GetMapping("/addtocart")
     public ModelAndView basketProduct(@RequestParam(required = false) int id, @RequestParam(required = false) int availability) {
-        Optional<Drink> byId = orderService.findById(id);
+        Optional<Item> byId = orderService.findById(id);
         if (byId.isPresent()) {
-            Drink drink = byId.get();
-            if (drink.getAvailability() >= availability) {
-                drink.setAvailability(drink.getAvailability() - availability);
-                orderService.order(drink, availability);
+            Item item = byId.get();
+            if (item.getAvailability() >= availability) {
+                item.setAvailability(item.getAvailability() - availability);
+                orderService.order(item, availability);
             }
         }
-        ModelAndView modelAndView = new ModelAndView("home");
+        ModelAndView modelAndView = new ModelAndView("store");
         modelAndView.addObject(byId);
-        modelAndView.addObject("drinks", orderService.findAllDrink());
+        modelAndView.addObject("items", orderService.findAllItem());
         return modelAndView;
     }
 
@@ -70,9 +71,9 @@ public class DrinkController {
     @GetMapping("/buy")
     public ModelAndView buy() {
         orderService.buy();
-        Set<Drink> drinks = orderService.findAllDrink();
-        ModelAndView modelAndView = new ModelAndView("home");
-        modelAndView.addObject("drinks", drinks);
+        Set<Item> items = orderService.findAllItem();
+        ModelAndView modelAndView = new ModelAndView("store");
+        modelAndView.addObject("items", items);
         return modelAndView;
     }
 

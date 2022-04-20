@@ -6,10 +6,10 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 
 @Entity
-public class DrinkType {
+public class ItemType {
     @Id
-    @GeneratedValue(generator = "drinkTypeSeq")
-    @SequenceGenerator(name = "drinkTypeSeq", sequenceName = "drinkType_seq", allocationSize = 1)
+    @GeneratedValue(generator = "itemTypeSeq")
+    @SequenceGenerator(name = "itemTypeSeq", sequenceName = "itemType_seq", allocationSize = 1)
    private int id;
    private String name;
 

@@ -20,27 +20,27 @@
 <a href="/braker" class="w3-button w3-light-grey w3-ripple w3-right">Obliczenie zabezpieczenia</a>
 <a href="/lowVoltage" class="w3-button w3-light-grey w3-ripple w3-right">Spadek napięć</a>
 <a href="/" class="w3-button w3-light-grey w3-ripple w3-right">Strona główna</a></br></br></br>
-<c:forEach var="drink" items="${drinks}">
+<c:forEach var="item" items="${items}">
 <div class="w3-content">
 
     <div class="w3-row w3-margin">
         <div class="w3-container  w3-light-grey">
-            <h1>${drink.name}</h1>
+            <h1>${item.name}</h1>
         </div>
 
         <div class="w3-twothird w3-container">
             <div class="w3-third">
-                <img src="img/${drink.id}.jpg" style="width:50%;min-height:100px">
+                <img src="img/${item.id}.jpg" style="width:50%;min-height:100px">
             </div>
             <p>
-            <td>Ilość w paczce: ${drink.volume}</td></br>
-            <td>Cena za paczkę: ${drink.price} zł</td></br>
-            <td>Dostępność: ${drink.availability} szt</td></br>
+            <td>Ilość w paczce: ${item.volume}</td></br>
+            <td>Cena za paczkę: ${item.price} zł</td></br>
+            <td>Dostępność: ${item.availability} szt</td></br>
             </p>
         </div>
         <form method="get" action="/addtocart">
             <input name="availability" class="w3-section w3-ripple" style="height: 37px;width: 50px"/>
-            <input name="id" value="${drink.id}" hidden/>
+            <input name="id" value="${item.id}" hidden/>
             <input class="w3-button w3-section w3-light-grey w3-ripple" type="submit" value="Dodaj do koszyka"/></br></br></br>
         </form>
 

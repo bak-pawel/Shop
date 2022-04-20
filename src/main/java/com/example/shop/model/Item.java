@@ -4,10 +4,10 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-public class Drink  {
+public class Item {
     @Id
-    @GeneratedValue(generator = "drinkSeq")
-    @SequenceGenerator(name = "drinkSeq", sequenceName = "drink_seq", allocationSize = 1)
+    @GeneratedValue(generator = "itemSeq")
+    @SequenceGenerator(name = "itemSeq", sequenceName = "item_seq", allocationSize = 1)
    private int id;
    private int typeId;
    private String name;
@@ -27,7 +27,7 @@ public class Drink  {
 
 
     @ManyToOne
-    private DrinkType drinkType;
+    private ItemType itemType;
 
     public int getId() {
         return id;
@@ -75,12 +75,12 @@ public class Drink  {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Drink drink = (Drink) o;
-        return id == drink.id &&
-                typeId == drink.typeId &&
-                volume == drink.volume &&
-                Double.compare(drink.price, price) == 0 &&
-                Objects.equals(name, drink.name);
+        Item item = (Item) o;
+        return id == item.id &&
+                typeId == item.typeId &&
+                volume == item.volume &&
+                Double.compare(item.price, price) == 0 &&
+                Objects.equals(name, item.name);
     }
 
     @Override

@@ -13,7 +13,7 @@ public class OrderItem {
     @ManyToOne
     private NewOrder newOrder;
     @ManyToOne
-    private Drink drink;
+    private Item item;
     private int amount;
 
     public OrderItem() {
@@ -36,12 +36,12 @@ public class OrderItem {
         this.newOrder = newOrder;
     }
 
-    public Drink getDrink() {
-        return drink;
+    public Item getItem() {
+        return item;
     }
 
-    public void setDrink(Drink drink) {
-        this.drink = drink;
+    public void setItem(Item item) {
+        this.item = item;
     }
 
     public int getAmount() {
@@ -60,17 +60,17 @@ public class OrderItem {
         return id == item.id &&
                 amount == item.amount &&
                 Objects.equals(newOrder, item.newOrder) &&
-                Objects.equals(drink, item.drink);
+                Objects.equals(item, item.item);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, newOrder, drink, amount);
+        return Objects.hash(id, newOrder, item, amount);
     }
 
-    public OrderItem(NewOrder newOrder, Drink drink, int amount) {
+    public OrderItem(NewOrder newOrder, Item item, int amount) {
         this.newOrder = newOrder;
-        this.drink = drink;
+        this.item = item;
         this.amount = amount;
     }
 

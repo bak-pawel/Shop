@@ -1,10 +1,10 @@
 package com.example.shop.service;
 
-import com.example.shop.model.Drink;
+import com.example.shop.model.Item;
 import com.example.shop.model.NewOrder;
 import com.example.shop.model.OrderItem;
 import com.example.shop.model.User;
-import com.example.shop.repository.DrinkRepository;
+import com.example.shop.repository.ItemRepository;
 import com.example.shop.repository.MathRepository;
 import com.example.shop.repository.OrderItemRepository;
 import com.example.shop.repository.OrderRepository;
@@ -16,65 +16,65 @@ import java.util.*;
 
 @Service
 public class OrderService {
-    private final DrinkRepository drinkRepository;
+    private final ItemRepository itemRepository;
     private final OrderItemRepository orderItemRepository;
     private final OrderRepository orderRepository;
     private final UserSessionProvider userSessionProvider;
     private final MathRepository mathRepository;
 
 
-    public OrderService(DrinkRepository drinkRepository, OrderItemRepository orderItemRepository, OrderRepository orderRepository, UserSessionProvider userSessionProvider, MathRepository mathRepository) {
-        this.drinkRepository = drinkRepository;
+    public OrderService(ItemRepository itemRepository, OrderItemRepository orderItemRepository, OrderRepository orderRepository, UserSessionProvider userSessionProvider, MathRepository mathRepository) {
+        this.itemRepository = itemRepository;
         this.orderItemRepository = orderItemRepository;
         this.orderRepository = orderRepository;
         this.userSessionProvider = userSessionProvider;
         this.mathRepository = mathRepository;
     }
 
-    public Set<Drink> findDrinkByName(String drinkName) {
-        if (drinkName == null || drinkName.equals("")) {
+    public Set<Item> findItemByName(String itemName) {
+        if (itemName == null || itemName.equals("")) {
 
-            return new HashSet<>(drinkRepository.findAll());
+            return new HashSet<>(itemRepository.findAll());
         }
-        return drinkRepository.findDrinkByName(drinkName);
+        return itemRepository.findItemByName(itemName);
 
     }
 
-    public Set<Drink> findAllDrink() {
-        return new HashSet<>(drinkRepository.findAll());
+    public Set<Item> findAllItem() {
+        return new HashSet<>(itemRepository.findAll());
     }
 
-    public Optional<Drink> findById(int id) {
-        return drinkRepository.findById(id);
+    public Optional<Item> findById(int id) {
+        return itemRepository.findById(id);
     }
 
-    public void order(Drink drink, int orderedAmount) {
-        drinkRepository.save(drink); //sciagamy ze stanu
+    public void order(Item item, int orderedAmount) {
+        itemRepository.save(item); //sciagamy ze stanu
         //pobierz niezrealizowany order dla zalogowanego usera, jesli nie ma to stworz nowy
         User loggedUser = userSessionProvider.getLoggedUser();
         Optional<NewOrder> cart = orderRepository.findByUser_UserNameAndFinishedIsFalse(loggedUser.getUsername());
         if (cart.isPresent()) {
-            Optional<OrderItem> byDrink_idAndNewOrder_id = orderItemRepository.findByDrink_IdAndNewOrder_Id(drink.getId(), cart.get().getId());
+            Optional<OrderItem> byDrink_idAndNewOrder_id = orderItemRepository.findByItem_IdAndNewOrder_Id(item.getId(), cart.get().getId());
             if(byDrink_idAndNewOrder_id.isPresent()){
-                OrderItem item = byDrink_idAndNewOrder_id.get();
-                item.setAmount(item.getAmount()+orderedAmount);
-                orderItemRepository.save(item);
+                OrderItem items = byDrink_idAndNewOrder_id.get();
+                items.setAmount(items.getAmount()+orderedAmount);
+                orderItemRepository.save(items);
             }else {
-                OrderItem item = new OrderItem();//element w koszu
-                item.setDrink(drink);
-                item.setAmount(orderedAmount);
-                item.setNewOrder(cart.get());
-                orderItemRepository.save(item);
+                OrderItem items = new OrderItem();//element w koszu
+                items.setItem(item);
+                items.setAmount(orderedAmount);
+                items.setNewOrder(cart.get());
+                orderItemRepository.save(items);
             }
         } else {
             NewOrder newOrder = new NewOrder(); // tworzymy nowe zamówienie
             newOrder.setUser(loggedUser); //ustawiamy usera dla tego zamówienia
             NewOrder savedOrder = orderRepository.save(newOrder); // zapisujemy ten koszyk dla usera
-            OrderItem item = new OrderItem();//element w koszu
-            item.setDrink(drink); // ustawiamy element zamówiony w koszyku
-            item.setAmount(orderedAmount); //ustawiamy ilość któeą klient zamówił
-            item.setNewOrder(savedOrder); // ustawiamy zamówienie z produktem
-            orderItemRepository.save(item); // zapisujemy element zamówienia
+            OrderItem items = new OrderItem();//element w koszu
+            items.setItem(item); // ustawiamy element zamówiony w koszyku
+            items.setAmount(orderedAmount); //ustawiamy ilość któeą klient zamówił
+            items.setNewOrder(savedOrder); // ustawiamy zamówienie z produktem
+            orderItemRepository.save(items); // zapisujemy element zamówienia
         }
     }
 
@@ -97,11 +97,11 @@ public class OrderService {
 
     public void delete(int itemId) {
         OrderItem one = orderItemRepository.getOne(itemId);
-        Optional<Drink> byId = drinkRepository.findById(one.getDrink().getId());
+        Optional<Item> byId = itemRepository.findById(one.getItem().getId());
         int availability = byId.get().getAvailability();
         byId.get().setAvailability(availability + one.getAmount());
         orderItemRepository.deleteById(itemId);
-        drinkRepository.save(byId.get());
+        itemRepository.save(byId.get());
     }
 
 
