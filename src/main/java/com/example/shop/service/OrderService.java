@@ -23,7 +23,11 @@ public class OrderService {
     private final MathRepository mathRepository;
 
 
-    public OrderService(ItemRepository itemRepository, OrderItemRepository orderItemRepository, OrderRepository orderRepository, UserSessionProvider userSessionProvider, MathRepository mathRepository) {
+    public OrderService(ItemRepository itemRepository,
+                        OrderItemRepository orderItemRepository,
+                        OrderRepository orderRepository,
+                        UserSessionProvider userSessionProvider,
+                        MathRepository mathRepository) {
         this.itemRepository = itemRepository;
         this.orderItemRepository = orderItemRepository;
         this.orderRepository = orderRepository;
@@ -54,7 +58,8 @@ public class OrderService {
         User loggedUser = userSessionProvider.getLoggedUser();
         Optional<NewOrder> cart = orderRepository.findByUser_UserNameAndFinishedIsFalse(loggedUser.getUsername());
         if (cart.isPresent()) {
-            Optional<OrderItem> byDrink_idAndNewOrder_id = orderItemRepository.findByItem_IdAndNewOrder_Id(item.getId(), cart.get().getId());
+            Optional<OrderItem> byDrink_idAndNewOrder_id = orderItemRepository.findByItem_IdAndNewOrder_Id(item.getId(),
+                    cart.get().getId());
             if(byDrink_idAndNewOrder_id.isPresent()){
                 OrderItem items = byDrink_idAndNewOrder_id.get();
                 items.setAmount(items.getAmount()+orderedAmount);

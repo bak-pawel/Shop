@@ -36,14 +36,6 @@ public class ItemController {
         return modelAndView;
     }
 
-    @GetMapping("/items")
-    public ModelAndView searchDrink(@RequestParam(required = true) String drinkName) {
-        Set<Item> item = orderService.findItemByName(drinkName);
-        ModelAndView modelAndView = new ModelAndView("view");
-        modelAndView.addObject("item", item);
-        return modelAndView;
-    }
-
     @GetMapping("/addtocart")
     public ModelAndView basketProduct(@RequestParam(required = false) int id, @RequestParam(required = false) int availability) {
         Optional<Item> byId = orderService.findById(id);
@@ -57,6 +49,13 @@ public class ItemController {
         ModelAndView modelAndView = new ModelAndView("store");
         modelAndView.addObject(byId);
         modelAndView.addObject("items", orderService.findAllItem());
+        return modelAndView;
+    }
+    @GetMapping("/items")
+    public ModelAndView searchDrink(@RequestParam(required = true) String drinkName) {
+        Set<Item> item = orderService.findItemByName(drinkName);
+        ModelAndView modelAndView = new ModelAndView("view");
+        modelAndView.addObject("item", item);
         return modelAndView;
     }
 
